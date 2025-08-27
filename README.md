@@ -42,8 +42,8 @@ Users should be able to:
 
 ### Links
 
-- **Solution URL**: [GitHub Repo](https://github.com/eko-nofiyanto/results-summary-component)  
-- **Live Site URL**: [Live Demo](https://eko-nofiyanto.github.io/results-summary-component/)  
+- **Solution URL**: [GitHub Repo](https://github.com/ekonof23/results-summary-component)  
+- **Live Site URL**: [Live Demo](https://ekonof23.github.io/results-summary-component/)  
 
 ---
 
