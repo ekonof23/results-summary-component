@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Mentor | Results summary component</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+</head>
+<body>
+  <main>
+    <!-- LEFT: Result -->
+    <section class="result">
+      <h2>Your Result</h2>
+      <div class="score-circle">
+        <span id="overall-score">0</span>
+        <small>of 100</small>
+      </div>
+      <h3>Great</h3>
+      <p>You scored higher than 65% of the people who have taken these tests.</p>
+    </section>
+
+    <!-- RIGHT: Summary -->
+    <section class="summary">
+      <h2>Summary</h2>
+      <ul id="summary-list"></ul>
+      <button class="continue-btn">Continue</button>
+    </section>
+  <script>
+    async function loadData() {
+      try {
+        const response = await fetch("data.json");
+        const data = await response.json();
+
+        const summaryList = document.getElementById("summary-list");
+        let totalScore = 0;
+
+        data.forEach(item => {
+          totalScore += item.score;
+
+          const li = document.createElement("li");
+          li.classList.add("summary-item");
+
+          li.innerHTML = `
+            <div class="item-left">
+              <img src="${item.icon}" alt="${item.category} icon">
+              <span>${item.category}</span>
+            </div>
+            <div class="item-right">
+              <strong>${item.score}</strong> / 100
+            </div>
+          `;
+
+          summaryList.appendChild(li);
+        });
+
+        // Hitung rata-rata
+        const average = Math.round(totalScore / data.length);
+        document.getElementById("overall-score").textContent = average;
+
+      } catch (error) {
+        console.error("Error loading data:", error);
+      }
+    }
+
+    loadData();
+  </script>
+  </main>
+
+
+   <div class="attribution">
+    Challenge by<a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>
+    Coded by<a href="#">Eko Nofiyanto</a>
+  </div>
+
+</body>
+</html>
